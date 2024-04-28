@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "q+m2pVOmZJPF8qWdr7kuDSFQt4ZmuTKX4PuZItI9VJ0MbOIRBeJXkoeCmo0WFWxYzNGkK0CzYOA+l4rHVxsxyg==",
+  "dgSpecHash": "xXRu2HeuMBGafr/vwUWVZW2rvmQGHY9xu9eH8X9ByM7NhdK+5FkF2Rand7YrP7QY806TUnZU9DfFQ5VVaAc8yA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Rockola\\Documents\\CursoNET\\BankAPI\\BankAPI.csproj",
+  "projectFilePath": "C:\\Users\\Rockola\\Documents\\CursoDotNet\\BankAPI\\BankAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Rockola\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Rockola\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\6.0.20\\microsoft.aspnetcore.authentication.jwtbearer.6.0.20.nupkg.sha512",

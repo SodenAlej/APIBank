@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace BankAPI.Controllers;
 
-[Authorize]
+[Authorize(Policy = "Viewer")]
 [ApiController]
 [Route("api/[controller]")]
 public class ClientController : ControllerBase

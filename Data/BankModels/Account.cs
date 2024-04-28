@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace BankAPI.Data.BankModels
 {
@@ -15,6 +16,7 @@ namespace BankAPI.Data.BankModels
         public int? ClientId { get; set; }
         public decimal Balance { get; set; }
         public DateTime RegDate { get; set; }
+
 
         public virtual AccountType AccountTypeNavigation { get; set; } = null!;
         public virtual Client? Client { get; set; }

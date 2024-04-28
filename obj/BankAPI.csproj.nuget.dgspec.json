@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Rockola\\Documents\\CursoNET\\BankAPI\\BankAPI.csproj": {}
+    "C:\\Users\\Rockola\\Documents\\CursoDotNet\\BankAPI\\BankAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Rockola\\Documents\\CursoNET\\BankAPI\\BankAPI.csproj": {
+    "C:\\Users\\Rockola\\Documents\\CursoDotNet\\BankAPI\\BankAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Rockola\\Documents\\CursoNET\\BankAPI\\BankAPI.csproj",
+        "projectUniqueName": "C:\\Users\\Rockola\\Documents\\CursoDotNet\\BankAPI\\BankAPI.csproj",
         "projectName": "BankAPI",
-        "projectPath": "C:\\Users\\Rockola\\Documents\\CursoNET\\BankAPI\\BankAPI.csproj",
+        "projectPath": "C:\\Users\\Rockola\\Documents\\CursoDotNet\\BankAPI\\BankAPI.csproj",
         "packagesPath": "C:\\Users\\Rockola\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Rockola\\Documents\\CursoNET\\BankAPI\\obj\\",
+        "outputPath": "C:\\Users\\Rockola\\Documents\\CursoDotNet\\BankAPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Rockola\\AppData\\Roaming\\NuGet\\NuGet.Config"

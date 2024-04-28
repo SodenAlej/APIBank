@@ -1,5 +1,6 @@
 using BankAPI.Data;
 using BankAPI.Data.BankModels;
+using BankAPI.Data.DTOs;
 using Microsoft.EntityFrameworkCore;
 using TestBankAPI.Data.DTOs;
 
@@ -59,6 +60,18 @@ public class AccountService
         return newAccount;
     }
 
+    public async Task UpdateBalance(TransactionDtoIn transaction,decimal newBalance)
+    {
+        var existingAccount = await GetById(transaction.AccountId);
+
+        if (existingAccount is not null)
+        {
+            existingAccount.Balance = newBalance;
+            await _context.SaveChangesAsync();
+        }
+
+
+    }
     public async Task Update (AccountDtoIn account)
     {
         var existingAccount = await GetById(account.Id);
@@ -83,9 +96,34 @@ public class AccountService
             await _context.SaveChangesAsync();
         }
     }
-
-    public static implicit operator AccountService(AccountTypeService v)
+    public async Task<decimal> ValidarRetiro(TransactionDtoIn transaction)
     {
-        throw new NotImplementedException();
+        
+      var oldBalance = await _context.Accounts
+            .Where(a => a.Id == transaction.AccountId) // Agrega condiciones si es necesario
+            .Select(a => a.Balance)
+            .FirstOrDefaultAsync();
+        decimal newBalance = oldBalance-transaction.Amount;
+        Console.WriteLine(newBalance);
+        return newBalance;
     }
+
+   public async Task<decimal> ValidarDeposito(TransactionDtoIn transaction)
+    {
+        
+      var oldBalance = await _context.Accounts
+            .Where(a => a.Id == transaction.AccountId) // Agrega condiciones si es necesario
+            .Select(a => a.Balance)
+            .FirstOrDefaultAsync();
+        decimal newBalance = oldBalance + transaction.Amount;
+        Console.WriteLine(newBalance);
+        return newBalance;
+    }
+
+
+
+    // public static implicit operator AccountService(AccountTypeService v)
+    // {
+    //     throw new NotImplementedException();
+    // }
 }

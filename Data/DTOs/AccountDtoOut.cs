@@ -7,4 +7,5 @@ public class AccountDtoOut
     public string ClientName { get; set; } = null!;
     public decimal Balance { get; set; }
     public DateTime RegDate { get; set; }
+
 }

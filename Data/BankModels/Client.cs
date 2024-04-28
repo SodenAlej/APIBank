@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace BankAPI.Data.BankModels
 {
@@ -15,6 +16,8 @@ namespace BankAPI.Data.BankModels
         public string PhoneNumber { get; set; } = null!;
         public string? Email { get; set; }
         public DateTime RegDate { get; set; }
+        [JsonIgnore]
+        public string Pwd { get; set; } = null!;
 
         public virtual ICollection<Account> Accounts { get; set; }
     }

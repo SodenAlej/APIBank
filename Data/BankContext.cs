@@ -143,6 +143,12 @@ namespace BankAPI.Data
                     .HasMaxLength(40)
                     .IsUnicode(false);
 
+                entity.Property(e => e.Pwd)
+                    .HasMaxLength(50)
+                    .IsUnicode(false)
+                    .HasColumnName("pwd")
+                    .HasDefaultValueSql("('1234')");
+
                 entity.Property(e => e.RegDate)
                     .HasColumnType("datetime")
                     .HasDefaultValueSql("(getdate())");

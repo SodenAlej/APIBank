@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -23,22 +24,26 @@ builder.Services.AddScoped<ClientService>();
 builder.Services.AddScoped<AccountService>();
 builder.Services.AddScoped<AccountTypeService>();
 builder.Services.AddScoped<LoginService>();
+builder.Services.AddScoped<TransactionService>();
 
-builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).
-    AddJwtBearer(options => 
-    {
-        options.TokenValidationParameters = new TokenValidationParameters
-        {
-            ValidateIssuerSigningKey = true,
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JWT:Key"])),
-            ValidateIssuer = false,
-            ValidateAudience = false        
-        };
-    });
 
-builder.Services.AddAuthorization(options => {
-    options.AddPolicy("SuperAdmin", policy => policy.RequireClaim("AdminType", "Super"));
-});
+ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).
+     AddJwtBearer(options => 
+     {  
+         options.TokenValidationParameters = new TokenValidationParameters
+         {
+             ValidateIssuerSigningKey = true,
+             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JWT:Key"])),
+             ValidateIssuer = false,
+             ValidateAudience = false        
+         };
+     });
+
+    builder.Services.AddAuthorization(options => {
+     options.AddPolicy("SuperAdmin", policy => policy.RequireClaim("AdminType", "Super"));
+     options.AddPolicy("Viewer", policy => policy.RequireClaim("AdminType"));
+     options.AddPolicy("Client", policy => policy.RequireClaim("ClientType", "Client"));
+ });
 
 var app = builder.Build();
 
