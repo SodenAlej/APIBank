@@ -35,7 +35,7 @@ public class TransactionController : ControllerBase
     public async Task<IActionResult> Deposito(TransactionDtoIn transaction, int id)
     {
         if( id != transaction.AccountId)
-            return BadRequest(new { message = $"El ID({id}) de la URL no coincide con el ID({transaction.Id}) del cuerpo de la solicitud"});
+            return BadRequest(new { message = $"El ID({id}) de la URL no coincide con el ID({transaction.AccountId}) del cuerpo de la solicitud"});
 
         if ( 1 != transaction.TransactionType)
             return BadRequest(new { message = $"El tipo de transaccion deseada no concuerda con el tipo de transaccion de la solicitud({transaction.TransactionType}) -- " +
@@ -64,6 +64,9 @@ public class TransactionController : ControllerBase
         if( 4 == transaction.TransactionType && transaction.ExternalAccount == null)
             return BadRequest(new { message = "Para los retiros via transferencia es necesario especificar una cuenta, ya sea interna o externa"});
         
+        if( 2 == transaction.TransactionType && transaction.ExternalAccount != null)
+            return BadRequest( new { message = "No puede tener cuenta asociada ya que es retiro en efectivo"});
+
         decimal newBalance = await accountService.ValidarRetiro(transaction);
 
         if ( newBalance < 0 )

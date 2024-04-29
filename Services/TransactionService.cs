@@ -43,6 +43,7 @@ public class TransactionService
         newTransaction.AccountId = newTransactionDTO.AccountId;
         newTransaction.TransactionType = newTransactionDTO.TransactionType;
         newTransaction.Amount = newTransactionDTO.Amount;
+        newTransaction.ExternalAccount = newTransactionDTO.ExternalAccount;
 
         _context.BankTransactions.Add(newTransaction);
        await _context.SaveChangesAsync();
